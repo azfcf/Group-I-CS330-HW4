@@ -30,4 +30,9 @@ public class MotorBike extends Vehicle{
 		
 	}
 
+	@Override
+	public String toCSVRow() {
+		return "MotorBike," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
+	}
 }
