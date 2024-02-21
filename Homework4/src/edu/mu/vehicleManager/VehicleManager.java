@@ -1,5 +1,9 @@
 package edu.mu.vehicleManager;
 
+import java.util.ArrayList;
+
+import edu.mu.vehicle.*;
+
 public class VehicleManager {
 	
 	public boolean initalizeStock() {
@@ -71,7 +75,7 @@ public class VehicleManager {
 		
 	}
 	
-	public ArrayList<Vehicle>getVehicleWithLowestFuelEfficiency(dboule distance, double fuelPrice) {
+	public ArrayList<Vehicle>getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
 		
 	}
 	
