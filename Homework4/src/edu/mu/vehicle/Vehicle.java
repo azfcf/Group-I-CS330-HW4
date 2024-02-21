@@ -1,5 +1,7 @@
 package edu.mu.vehicle;
 
+import java.time.ZonedDateTime;
+
 public abstract class Vehicle {
 	protected String brand;
 	protected String make;
@@ -12,7 +14,7 @@ public abstract class Vehicle {
 	protected int cylinders;
 	protected double gasTankCapacity;
 	protected StartMechanism startType;
-
+	
 	public Vehicle() {
 	}
 	
@@ -44,6 +46,10 @@ public abstract class Vehicle {
 		this.cylinders = vehicle.cylinders;
 		this.gasTankCapacity = vehicle.gasTankCapacity;
 		this.startType = vehicle.startType;
+	}
+	
+	protected int getCurrentYear() {
+		return ZonedDateTime.now().getYear();
 	}
 	
 	public abstract double calculateMaintenaceCost(double distance); // calculates maintenance cost for a specific vehicle
