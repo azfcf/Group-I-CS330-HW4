@@ -1,5 +1,5 @@
 package edu.mu.vehicle;
 
-public class Vehicle {
+public abstract class Vehicle {
 
 }
