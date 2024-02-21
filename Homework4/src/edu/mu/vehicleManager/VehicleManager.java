@@ -82,7 +82,7 @@ public class VehicleManager {
 	public void displayAllVehicleInformation() {
 		for ( Vehicle vehicle: vehicleList ) {
 		
-			System.out.println(vehicle.toString());
+			System.out.println(vehicle.toString());//
 			return;
 			}
 		
