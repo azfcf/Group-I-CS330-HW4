@@ -29,5 +29,11 @@ public class SUV extends Vehicle{
 		System.out.println("PUSHSTART");
 		
 	}
+	
+	@Override
+	public String toCSVRow() {
+		return "SUV," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
+	}
 
 }
