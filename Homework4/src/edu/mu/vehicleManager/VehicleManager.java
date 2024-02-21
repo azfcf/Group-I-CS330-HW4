@@ -2,9 +2,11 @@ package edu.mu.vehicleManager;
 
 public class VehicleManager {
 	
+	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
+	private String vehicleFilePath = "vehicleList.csv";
+	
 	public boolean initalizeStock() {
 		//needs to be completed 
-		
 		
 		return false;
 	}
