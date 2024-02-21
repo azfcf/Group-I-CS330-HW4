@@ -16,32 +16,78 @@ public class VehicleManager {
 	}
 	
 	public void displayAllCarInformation() {
-		//needs to be completed
-	}
 	
-	public void displayAllTruckInformation() {
-		//needs to be completed
+		
+		for (Vehicle vehicle : vehicleList) {
+			if ( vehicle instanceof Car) {
+		
+				System.out.println(vehicle.toString());
+				return;
+			}
+			System.out.println(" No car in inventory ");
+		}
 		
 	}
 	
+	public void displayAllTruckInformation() {
+		for (Vehicle vehicle : vehicleList) {
+			if ( vehicle instanceof Truck) {
+		
+				System.out.println(vehicle.toString());
+				return;
+			}
+			System.out.println(" No Truck in inventory ");
+		}
+				
+	}
+	
 	public void displayAllSUVInformation() {
+		for (Vehicle vehicle : vehicleList) {
+			if ( vehicle instanceof SUV) {
+		
+				System.out.println(vehicle.toString());
+				return;
+			}
+			System.out.println(" No SUV in inventory ");
+		}
 		
 	}
 	
 	public void displayAllMotorBikeInformation() {
 		
+		for (Vehicle vehicle : vehicleList) {
+			if ( vehicle instanceof MotorBike) {
+		
+				System.out.println(vehicle.toString());
+				return;
+			}
+			System.out.println(" No MotorBike in inventory ");
+		}
 	}
 	
 	public void displayVehicleInformation(Vehicle v) {
-		
+		for (Vehicle vehicle: vehicleList ) {
+			if (vehicle.equals(v)) {
+				
+				System.out.println(vehicle.toString());
+				return;
+			}
+		}
+		System.out.println("Vehicle is not in inventory");
 	}
 	
 	public void displayAllVehicleInformation() {
+		for ( Vehicle vehicle: vehicleList ) {
 		
+			System.out.println(vehicle.toString());
+			return;
+			}
+		
+		System.out.println("no vehicle in inventory");
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle) {
-		//needs to be completed 
+		 
 		
 		return false;
 	}
