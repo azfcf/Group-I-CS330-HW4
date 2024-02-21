@@ -77,7 +77,7 @@ public class VehicleManager {
 	}
 	
 	public void displayAllVehicleInformation() {
-		for ( Vehicle vehicle: vehicleList ) {
+		for ( Vehicle vehicle: vehicleList ) {//need to write comments 
 		
 			System.out.println(vehicle.toString());
 			return;
