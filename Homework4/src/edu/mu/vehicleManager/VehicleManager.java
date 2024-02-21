@@ -6,9 +6,11 @@ import edu.mu.vehicle.*;
 
 public class VehicleManager {
 	
+	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
+	private String vehicleFilePath = "vehicleList.csv";
+	
 	public boolean initalizeStock() {
 		//needs to be completed 
-		
 		
 		return false;
 	}
