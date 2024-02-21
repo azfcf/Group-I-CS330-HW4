@@ -1,5 +1,9 @@
 package edu.mu.main;
 
-public class Main {
+import edu.mu.vehicleManager.VehicleManager;
 
+public class Main {
+	VehicleManager man = new VehicleManager();
+	
+	boolean flag = man.initalizeStock();
 }
