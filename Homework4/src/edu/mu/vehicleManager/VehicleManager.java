@@ -138,15 +138,21 @@ public class VehicleManager {
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle) {
-		 
-		
-		return false;
+		if (vehicleList.contains(vehicle)) { //Check if vehicleList contains the specific vehicle
+			vehicleList.remove(vehicle); //If it is found, remove it
+			return true;
+		} else { //It if is not found, return false
+			return false;
+		}
 	}
 	
 	public boolean addVehicle(Vehicle vehicle) {
-		//needs to be completed
-		
-		return false;
+		if (!vehicleList.contains(vehicle)) { //Check if vehicleList does not contain the specific vehicle
+			vehicleList.add(vehicle); //If it is not found, add it
+			return true;
+		} else {
+			return false; //If it is found, return false
+		}
 	}
 	
 	public boolean saveVehicleList() {
@@ -177,9 +183,13 @@ public class VehicleManager {
 	}
 	*/
 	public int getNumberOfVehiclesByType(Class clazz) {
-		//needs to be completed
-		
-		return 0;
+		int count = 0; //counter
+		for (Vehicle vehicle : vehicleList) { //iterate through each vehicle
+			if (clazz.isInstance(vehicle)) { //check if current vehicle is an instance of the specific type
+				count++; //If so, increment the counter
+			}
+		}
+		return count; //return total count
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
