@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 import edu.mu.vehicle.*;
 
@@ -175,13 +176,15 @@ public class VehicleManager {
 		}
 		return false;
 	}
-	/*
+	
 	private boolean isVehicleType(Vehicle v, Class clazz) {
-		//needs to be completed
-		
-		return false;
+		if (clazz.isInstance(v)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	*/
+	
 	public int getNumberOfVehiclesByType(Class clazz) {
 		int count = 0; //counter
 		for (Vehicle vehicle : vehicleList) { //iterate through each vehicle
@@ -196,6 +199,29 @@ public class VehicleManager {
 		//needs to be completed
 		SUV s = new SUV(null);
 		return s;
+	}
+	
+	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
+		Vehicle vehicleWithLowestCost = null; //Variable to keep track of the vehicles with lowest cost
+		double lowestCost = Double.MAX_VALUE; //Variable to keep track of lowest cost itself
+		int count = 0; //Counter for vehicles with same lowest cost
+		
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			double maintenanceCost = vehicle.calculateMaintenaceCost(distance); //Calculate cost for the specified vehicle
+			
+			if (maintenanceCost < lowestCost) { //Update lowestCost and vehicleWithLowestCost while also resetting count if a new lowest is found
+				lowestCost = maintenanceCost;
+				vehicleWithLowestCost = vehicle;
+				count = 1;
+			} else if (maintenanceCost == lowestCost) { 
+				count++; //Increment count for vehicles with same lowest cost
+				Random random = new Random(); //Randomly select only one of the vehicles with the same lowest count
+				if (random.nextInt(count) == 0) {
+					vehicleWithLowestCost = vehicle;
+				}
+			}
+		}
+		return vehicleWithLowestCost; //Return vehicle with the lowest maintenance cost
 	}
 	
 	public ArrayList<Vehicle>getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
