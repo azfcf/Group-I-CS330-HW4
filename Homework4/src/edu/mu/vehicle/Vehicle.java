@@ -52,6 +52,7 @@ public abstract class Vehicle {
 		return ZonedDateTime.now().getYear();
 	}
 	
+	public abstract String toCSVRow();
 	public abstract double calculateMaintenaceCost(double distance); // calculates maintenance cost for a specific vehicle
 	public abstract double calculateFuelEfficiency(double distance, double fuelPrice); // calculates the engine efficiency
 	public abstract void startEngine(); // prints how the vehicle starts

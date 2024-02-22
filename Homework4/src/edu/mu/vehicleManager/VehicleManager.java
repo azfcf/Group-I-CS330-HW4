@@ -1,7 +1,9 @@
 package edu.mu.vehicleManager;
-
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -102,16 +104,32 @@ public class VehicleManager {
 	}
 	
 	public boolean saveVehicleList() {
-		//needs to be completed
-		
+		// Look for the file specified and open it
+		try(FileWriter writer = new FileWriter(vehicleFilePath)){
+
+			// Write the CSV header
+			String header = "Type,Model,Make,ModelYear,Price,Color,FuelType,Mileage,Mass,Cylinders,GasTankCapacity,StartType\n";
+			writer.write(header);
+			
+			// Write the details of all products in the inventory to file
+			for(Vehicle vehicle : vehicleList) {
+				writer.write(vehicle.toCSVRow() + "\n");
+			}
+			return true; // File writer closes automatically due to try-with-resource block 
+		} catch(FileNotFoundException e) {
+			System.out.println("File \"" + vehicleFilePath + "\" could not be found");
+		} catch(IOException e) {
+			System.out.println("Cannot write to file!\n" + e);
+		}
 		return false;
 	}
-	
+	/*
 	private boolean isVehicleType(Vehicle v, Class clazz) {
 		//needs to be completed
 		
 		return false;
 	}
+	*/
 	public int getNumberOfVehiclesByType(Class clazz) {
 		//needs to be completed
 		

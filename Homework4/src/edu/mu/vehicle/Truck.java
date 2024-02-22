@@ -29,4 +29,10 @@ public class Truck extends Vehicle {
 		System.out.println("KEYSTART");
 		
 	}
+
+	@Override
+	public String toCSVRow() {
+		return "Truck," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
+	}
 }
