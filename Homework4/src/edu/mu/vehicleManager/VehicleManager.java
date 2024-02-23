@@ -196,9 +196,26 @@ public class VehicleManager {
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
-		//needs to be completed
-		SUV s = new SUV(null);
-		return s;
+		Vehicle vehicleWithHighestCost = null; //Variable to keep track of the vehicles with highest cost
+		double highestCost = Double.MIN_VALUE; //Variable to keep track of highest cost itself
+		int count = 0; //Counter for vehicles with the same highest cost
+		
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			double maintenanceCost = vehicle.calculateMaintenaceCost(distance); //Calculate cost for the specified vehicle
+			
+			if (maintenanceCost > highestCost) { //Update highestCost and vehicleWithHighestCost while also resetting count if a new highest is found
+				highestCost = maintenanceCost;
+				vehicleWithHighestCost = vehicle;
+				count = 1;
+			} else if (maintenanceCost == highestCost) {
+				count++; //Increment count for vehicles with the same highest count
+				Random random = new Random(); //Randomly select only one =of the vehicles with the same highest count
+				if (random.nextInt(count) == 0) {
+					vehicleWithHighestCost = vehicle;
+				}
+			}
+		}
+		return vehicleWithHighestCost; //Return vehicle with the highest maintenance cost
 	}
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
