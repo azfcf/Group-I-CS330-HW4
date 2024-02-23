@@ -73,51 +73,64 @@ public class VehicleManager {
 	}
 	
 	public void displayAllCarInformation() {
-	
-		for (Vehicle vehicle : vehicleList) {
-			if ( vehicle instanceof Car) {
+		boolean carExistsInList = false;
 		
+		for (Vehicle vehicle : vehicleList) {
+			if (vehicle instanceof Car) {
+
 				System.out.println(vehicle.toString());
-				return;
+				carExistsInList = true;
 			}
-			System.out.println(" No car in inventory ");
 		}
 		
+		if (!carExistsInList) {
+			System.out.println("No cars in inventory.");
+		}
 	}
 	
 	public void displayAllTruckInformation() {
+		boolean truckExistsInList = false;
+		
 		for (Vehicle vehicle : vehicleList) {
-			if ( vehicle instanceof Truck) {
+			if (vehicle instanceof Truck) {
 		
 				System.out.println(vehicle.toString());
-				return;
+				truckExistsInList = true;
 			}
-			System.out.println(" No Truck in inventory ");
 		}
-				
+		
+		if (!truckExistsInList) {
+			System.out.println("No trucks in inventory.");
+		}
 	}
 	
 	public void displayAllSUVInformation() {
-		for (Vehicle vehicle : vehicleList) {
-			if ( vehicle instanceof SUV) {
+		boolean suvExistsInList = false;
 		
+		for (Vehicle vehicle : vehicleList) {
+			if (vehicle instanceof SUV) {
 				System.out.println(vehicle.toString());
-				return;
+				suvExistsInList = true;
 			}
-			System.out.println(" No SUV in inventory ");
 		}
 		
+		if (!suvExistsInList) {
+			System.out.println("No SUVs in inventory.");
+		}
 	}
 	
 	public void displayAllMotorBikeInformation() {
+		boolean motorBikeExistsInList = false;
 		
 		for (Vehicle vehicle : vehicleList) {
 			if ( vehicle instanceof MotorBike) {
-		
 				System.out.println(vehicle.toString());
-				return;
+				motorBikeExistsInList = true;
 			}
-			System.out.println(" No MotorBike in inventory ");
+		}
+		
+		if (!motorBikeExistsInList) {
+			System.out.println("No motor bikes in inventory.");
 		}
 	}
 	
@@ -136,7 +149,6 @@ public class VehicleManager {
 		for ( Vehicle vehicle: vehicleList ) {
 		
 			System.out.println(vehicle.toString());//
-			return;
 			}
 		
 		System.out.println("no vehicle in inventory");
