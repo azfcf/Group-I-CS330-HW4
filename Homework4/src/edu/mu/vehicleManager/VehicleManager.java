@@ -282,8 +282,24 @@ public class VehicleManager {
 	}
 	
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
-		//needs to be completed
 		
-		return 0.0;
+		double totalEfficiency = 0.0; //Variable to keep track of total fuel efficiency
+		int suvCount = 0; //Variable to keep track of the count of SUVs
+		
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			if (isVehicleType(vehicle, SUV.class)) { //Check if the vehicle is an instance of SUV
+				double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice); //Calculate fuel efficiency for the SUV
+				
+				totalEfficiency += efficiency; //Add efficiency to the total
+				suvCount++; //Increment the count of SUVs
+			}
+		}
+		
+		if (suvCount == 0) { //Check if there are any SUVs in the list
+			return -1.0; //If there is none then return -1.0 as an error code
+		} else {
+			double averageEfficiency = totalEfficiency / suvCount; //If there is the calculate and return the average fuel efficiency
+			return averageEfficiency;
+		}
 	}
 }
