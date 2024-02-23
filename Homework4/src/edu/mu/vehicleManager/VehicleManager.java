@@ -13,7 +13,7 @@ import edu.mu.vehicle.*;
 public class VehicleManager {
 	
 	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
-	private static final String vehicleFilePath = "vehicleList.csv";  // CSV file path
+	private static final String vehicleFilePath = "vehicleList_DEBUG.csv";  // CSV file path
 	
 	public VehicleManager() { 
 		initalizeStock();
@@ -142,16 +142,17 @@ public class VehicleManager {
 				return;
 			}
 		}
-		System.out.println("Vehicle is not in inventory");
+		System.out.println("Vehicle is not in inventory.");
 	}
 	
 	public void displayAllVehicleInformation() {
 		for ( Vehicle vehicle: vehicleList ) {
+			System.out.println(vehicle.toString());
+		}
 		
-			System.out.println(vehicle.toString());//
-			}
-		
-		System.out.println("no vehicle in inventory");
+		if (vehicleList.size() == 0) {
+			System.out.println("No vehicles in inventory.");
+		}
 	}
 	
 	public boolean removeVehicle(Vehicle vehicle) {
