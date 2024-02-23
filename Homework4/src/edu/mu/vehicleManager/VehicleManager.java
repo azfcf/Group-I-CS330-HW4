@@ -200,9 +200,26 @@ public class VehicleManager {
 	}
 	
 	public Vehicle getVehicleWithHighestMaintenanceCost(double distance) {
-		//needs to be completed
-		SUV s = new SUV(null);
-		return s;
+		Vehicle vehicleWithHighestCost = null; //Variable to keep track of the vehicles with highest cost
+		double highestCost = Double.MIN_VALUE; //Variable to keep track of highest cost itself
+		int count = 0; //Counter for vehicles with the same highest cost
+		
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			double maintenanceCost = vehicle.calculateMaintenaceCost(distance); //Calculate cost for the specified vehicle
+			
+			if (maintenanceCost > highestCost) { //Update highestCost and vehicleWithHighestCost while also resetting count if a new highest is found
+				highestCost = maintenanceCost;
+				vehicleWithHighestCost = vehicle;
+				count = 1;
+			} else if (maintenanceCost == highestCost) {
+				count++; //Increment count for vehicles with the same highest count
+				Random random = new Random(); //Randomly select only one =of the vehicles with the same highest count
+				if (random.nextInt(count) == 0) {
+					vehicleWithHighestCost = vehicle;
+				}
+			}
+		}
+		return vehicleWithHighestCost; //Return vehicle with the highest maintenance cost
 	}
 	
 	public Vehicle getVehicleWithLowestMaintenanceCost(double distance) {
@@ -229,22 +246,64 @@ public class VehicleManager {
 	}
 	
 	public ArrayList<Vehicle>getVehicleWithHighestFuelEfficiency(double distance, double fuelPrice) {
-		//needs to be completed
 		
-		ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
+		ArrayList<Vehicle> vehiclesWithHighestEfficiency = new ArrayList<Vehicle>(); //List to keep track of the vehicles with the highest efficiency
+		double highestEfficiency = Double.MIN_VALUE; //Variable to keep track of highest efficiency itself
 		
-		return vehicleList;
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice); //Calculate fuel efficiency for the specified vehicle
+			
+			if (efficiency > highestEfficiency) { //Clear the list of vehicles and update the list with the new highest efficiency if the current vehicle's efficiency is higher than the previous
+				highestEfficiency = efficiency;
+				vehiclesWithHighestEfficiency.clear();
+				vehiclesWithHighestEfficiency.add(vehicle);
+			} else if (efficiency == highestEfficiency) { //If the current vehicle's efficiency matches the highest found so far, add it to the list
+				vehiclesWithHighestEfficiency.add(vehicle);
+			}
+		}
+		
+		return vehiclesWithHighestEfficiency; //Return list of vehicles with the highest fuel efficiency
 	}
 	
 	public ArrayList<Vehicle>getVehicleWithLowestFuelEfficiency(double distance, double fuelPrice) {
-		ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
 		
-		return vehicleList;
+		ArrayList<Vehicle> vehiclesWithLowestEfficiency = new ArrayList<Vehicle>(); //List to keep track of the vehicles with the lowest efficiency
+		double lowestEfficiency = Double.MAX_VALUE; //Variable to keep track of lowest efficiency itself
+		
+		for (Vehicle vehicle : vehicleList)  {//Iterate through each vehicle in vehicleList
+			double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice); //Calculate fuel efficiency for the specified vehicle
+			
+			if (efficiency < lowestEfficiency) { //Clear the list of vehicles and update the list with the new lowest efficiency if the current vehicle's efficiency is lower than the previous
+				lowestEfficiency = efficiency;
+				vehiclesWithLowestEfficiency.clear();
+				vehiclesWithLowestEfficiency.add(vehicle);
+			} else if (efficiency == lowestEfficiency) { //If the current vehicle's efficiency matches the lowest found so far, add it to the list
+				vehiclesWithLowestEfficiency.add(vehicle);
+			}
+		}
+		
+		return vehiclesWithLowestEfficiency; //Return list of vehicles with the lowest fuel efficiency
 	}
 	
 	public double getAverageFuelEfficiencyOfSUVs(double distance, double fuelPrice) {
-		//needs to be completed
 		
-		return 0.0;
+		double totalEfficiency = 0.0; //Variable to keep track of total fuel efficiency
+		int suvCount = 0; //Variable to keep track of the count of SUVs
+		
+		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
+			if (isVehicleType(vehicle, SUV.class)) { //Check if the vehicle is an instance of SUV
+				double efficiency = vehicle.calculateFuelEfficiency(distance, fuelPrice); //Calculate fuel efficiency for the SUV
+				
+				totalEfficiency += efficiency; //Add efficiency to the total
+				suvCount++; //Increment the count of SUVs
+			}
+		}
+		
+		if (suvCount == 0) { //Check if there are any SUVs in the list
+			return -1.0; //If there is none then return -1.0 as an error code
+		} else {
+			double averageEfficiency = totalEfficiency / suvCount; //If there is the calculate and return the average fuel efficiency
+			return averageEfficiency;
+		}
 	}
 }
