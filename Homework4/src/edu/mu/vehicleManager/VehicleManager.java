@@ -13,19 +13,24 @@ import edu.mu.vehicle.*;
 public class VehicleManager {
 	
 	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
-	private String vehicleFilePath = "vehicleList.csv";
+	private static final String vehicleFilePath = "vehicleList.csv";  // CSV file path
+	
+	public VehicleManager() { 
+		initalizeStock();
+	}
 	
 	public boolean initalizeStock() {
-		//needs to be completed 
-		File file = new File(vehicleFilePath);
+		File file = new File(vehicleFilePath); 
 		try {
 			Scanner fileScanner = new Scanner(file);
 			fileScanner.nextLine();
+			
 			while(fileScanner.hasNext()) {
-				//do something
+				// Read each line in the file and try to create a Vehicle object from the data
 				String vehicle = fileScanner.nextLine();
 				String[] splitVehicle = vehicle.split(",");
-				//getting data from split string
+				
+				// getting data from split string
 				String brand = splitVehicle[1];
 				String make = splitVehicle[2];
 				long modelYear = Long.parseLong(splitVehicle[3]);
@@ -37,6 +42,7 @@ public class VehicleManager {
 				int cylinders = Integer.parseInt(splitVehicle[9]);
 				double gasTankCapacity = Double.parseDouble(splitVehicle[10]);
 				StartMechanism startMechanism = StartMechanism.valueOf(splitVehicle[11]);
+				
 				
 				if(splitVehicle[0].equals("Truck")){
 					Truck truck = new Truck(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
@@ -50,26 +56,24 @@ public class VehicleManager {
 					Car car = new Car(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(car);
 				}
-				else {
+				else if(splitVehicle[0].equals("MotorBike")){
 					MotorBike bike = new MotorBike(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(bike);
 				}
-				
+				else {
+					System.out.println(splitVehicle[0] + "is not a recognized vehicle type. Skipping this entry.");
+				}
 			}
 			fileScanner.close();
-			System.out.println(vehicleList.toString());
 			return true;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
-		
 	}
 	
 	public void displayAllCarInformation() {
 	
-		
 		for (Vehicle vehicle : vehicleList) {
 			if ( vehicle instanceof Car) {
 		
