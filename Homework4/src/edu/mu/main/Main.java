@@ -16,13 +16,25 @@ public class Main {
 		 */
 		
 		// Display all vehicle information.
-		vehicleManager.displayAllVehicleInformation();
+		//vehicleManager.displayAllVehicleInformation();
 		
 		// Display all car information.
-		vehicleManager.displayAllCarInformation();
+		//vehicleManager.displayAllCarInformation();
 		
 		// Display all motorbike information.
+		//vehicleManager.displayAllMotorBikeInformation();\
+		
+		vehicleManager.displayAllVehicleInformation();
+		System.out.println();
+		vehicleManager.displayAllCarInformation();
+		System.out.println();
+		vehicleManager.displayAllTruckInformation();
+		System.out.println();
+		vehicleManager.displayAllSUVInformation();
+		System.out.println();
 		vehicleManager.displayAllMotorBikeInformation();
+		
+		
 	}
 }
 

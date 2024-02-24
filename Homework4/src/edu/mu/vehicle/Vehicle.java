@@ -53,7 +53,7 @@ public abstract class Vehicle {
 	}
 	
 	public abstract String toCSVRow();
-	public abstract double calculateMaintenaceCost(double distance); // calculates maintenance cost for a specific vehicle
+	public abstract double calculateMaintenanceCost(double distance); // calculates maintenance cost for a specific vehicle
 	public abstract double calculateFuelEfficiency(double distance, double fuelPrice); // calculates the engine efficiency
 	public abstract void startEngine(); // prints how the vehicle starts
 	
@@ -63,6 +63,23 @@ public abstract class Vehicle {
 				+ ", color=" + color + ", fuelType=" + fuelType + ", mileage=" + mileage + ", mass=" + mass
 				+ ", cylinders=" + cylinders + ", gasTankCapacity=" + gasTankCapacity + ", startType=" + startType
 				+ "]";
+	}
+	
+	public void displayAllInfo(double distance, double fuelPrice) {
+		System.out.println(
+				modelYear + " " +  brand + " " + make + " (" + this.getClass().getSimpleName() + ")\n" + "----------------------" + "\n"
+				+ "Price: " + price + "\n"
+				+ "Color: " + color + "\n"
+				+ "Fuel type: " + fuelType + "\n"
+				+ "Mileage:  " + mileage + "\n"
+				+ "Mass: " + mass + "\n"
+				+ "Cylinders: " + cylinders + "\n"
+				+ "Gas tank capacity: " + gasTankCapacity);
+		System.out.print("Start type: ");
+		startEngine();
+		System.out.println("Maintenance cost: " + calculateMaintenanceCost(distance) + "\n"
+				+ "Fuel efficiency: " + calculateFuelEfficiency(distance, fuelPrice) + "\n");
+				
 	}
 
 	public String getBrand() {
