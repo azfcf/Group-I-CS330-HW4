@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -71,8 +72,11 @@ public class VehicleManager {
 			return true;
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-			return false;
+		} catch (NoSuchElementException e) {
+			System.out.println("File is formatted incorrectly or empty.");
+			e.printStackTrace();
 		}
+		return false;
 	}
 	
 	public void displayAllCarInformation() {
@@ -192,13 +196,14 @@ public class VehicleManager {
 		} catch(FileNotFoundException e) {
 			System.out.println("File \"" + vehicleFilePath + "\" could not be found");
 		} catch(IOException e) {
-			System.out.println("Cannot write to file!\n" + e);
+			System.out.println("Cannot write to file!");
+			e.printStackTrace();
 		}
 		return false;
 	}
 	
 	private boolean isVehicleType(Vehicle v, Class clazz) {
-		if (clazz.isInstance(v)) {
+		if (v.getClass() == clazz) {
 			return true;
 		} else {
 			return false;
