@@ -156,7 +156,7 @@ public class VehicleManager {
 	
 	public void displayAllVehicleInformation() {
 		for ( Vehicle vehicle: vehicleList ) {
-			System.out.println(vehicle.toString());
+			vehicle.displayAllInfo(distance, fuelPrice);
 		}
 		
 		if (vehicleList.size() == 0) {
