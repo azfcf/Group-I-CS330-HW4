@@ -13,7 +13,7 @@ public class SUV extends Vehicle{
 	}
 
 	@Override
-	public double calculateMaintenaceCost(double distance) {
+	public double calculateMaintenanceCost(double distance) {
 		double maintenanceCost = distance * mass * (getCurrentYear() - modelYear) * cylinders * 0.001;
 		return maintenanceCost;
 	}

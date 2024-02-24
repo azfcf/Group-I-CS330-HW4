@@ -15,6 +15,9 @@ public class VehicleManager {
 	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
 	private static final String vehicleFilePath = "vehicleList.csv";  // CSV file path
 	
+	private static final double distance = 300;
+	private static final double fuelPrice = 3.25;
+
 	public ArrayList<Vehicle> getVehicleList() {
 		return new ArrayList<Vehicle>(vehicleList);
 	}
@@ -85,7 +88,7 @@ public class VehicleManager {
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof Car) {
 
-				System.out.println(vehicle.toString());
+				vehicle.displayAllInfo(distance, fuelPrice);
 				carExistsInList = true;
 			}
 		}
@@ -101,7 +104,7 @@ public class VehicleManager {
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof Truck) {
 		
-				System.out.println(vehicle.toString());
+				vehicle.displayAllInfo(distance, fuelPrice);
 				truckExistsInList = true;
 			}
 		}
@@ -116,7 +119,7 @@ public class VehicleManager {
 		
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof SUV) {
-				System.out.println(vehicle.toString());
+				vehicle.displayAllInfo(distance, fuelPrice);
 				suvExistsInList = true;
 			}
 		}
@@ -131,7 +134,7 @@ public class VehicleManager {
 		
 		for (Vehicle vehicle : vehicleList) {
 			if ( vehicle instanceof MotorBike) {
-				System.out.println(vehicle.toString());
+				vehicle.displayAllInfo(distance, fuelPrice);
 				motorBikeExistsInList = true;
 			}
 		}
@@ -144,8 +147,7 @@ public class VehicleManager {
 	public void displayVehicleInformation(Vehicle v) {
 		for (Vehicle vehicle: vehicleList ) {
 			if (vehicle.equals(v)) {
-				
-				System.out.println(vehicle.toString());
+				vehicle.displayAllInfo(distance, fuelPrice);
 				return;
 			}
 		}
@@ -226,7 +228,7 @@ public class VehicleManager {
 		int count = 0; //Counter for vehicles with the same highest cost
 		
 		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
-			double maintenanceCost = vehicle.calculateMaintenaceCost(distance); //Calculate cost for the specified vehicle
+			double maintenanceCost = vehicle.calculateMaintenanceCost(distance); //Calculate cost for the specified vehicle
 			
 			if (maintenanceCost > highestCost) { //Update highestCost and vehicleWithHighestCost while also resetting count if a new highest is found
 				highestCost = maintenanceCost;
@@ -249,7 +251,7 @@ public class VehicleManager {
 		int count = 0; //Counter for vehicles with same lowest cost
 		
 		for (Vehicle vehicle : vehicleList) { //Iterate through each vehicle in vehicleList
-			double maintenanceCost = vehicle.calculateMaintenaceCost(distance); //Calculate cost for the specified vehicle
+			double maintenanceCost = vehicle.calculateMaintenanceCost(distance); //Calculate cost for the specified vehicle
 			
 			if (maintenanceCost < lowestCost) { //Update lowestCost and vehicleWithLowestCost while also resetting count if a new lowest is found
 				lowestCost = maintenanceCost;

@@ -13,7 +13,7 @@ public class Truck extends Vehicle {
 	}
 
 	@Override
-	public double calculateMaintenaceCost(double distance) {
+	public double calculateMaintenanceCost(double distance) {
 		double maintenanceCost = distance * mass * (getCurrentYear() - modelYear) * cylinders * 0.002;
 		return maintenanceCost;
 	}
