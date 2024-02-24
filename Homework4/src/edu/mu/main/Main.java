@@ -16,25 +16,70 @@ public class Main {
 		 */
 		
 		// Display all vehicle information.
-		//vehicleManager.displayAllVehicleInformation();
+		System.out.println("All Vehicle info\n-----------------------------\n");
+		vehicleManager.displayAllVehicleInformation();
 		
 		// Display all car information.
-		//vehicleManager.displayAllCarInformation();
+		System.out.println("All car info\n-----------------------------\n");
+		vehicleManager.displayAllCarInformation();
 		
 		// Display all motorbike information.
-		//vehicleManager.displayAllMotorBikeInformation();\
-		
-		vehicleManager.displayAllVehicleInformation();
-		System.out.println();
-		vehicleManager.displayAllCarInformation();
-		System.out.println();
-		vehicleManager.displayAllTruckInformation();
-		System.out.println();
-		vehicleManager.displayAllSUVInformation();
-		System.out.println();
+		System.out.println("All motorbike info\n-----------------------------\n");
 		vehicleManager.displayAllMotorBikeInformation();
 		
+		System.out.println("All truck info\n-----------------------------\n");
+		vehicleManager.displayAllTruckInformation();
 		
+		System.out.println("All SUV info\n-----------------------------\n");
+		vehicleManager.displayAllSUVInformation();
+		
+		/*
+		 * Below are some testing statements
+		 */
+		
+//		// Testing getNumberOfVehiclesByType()
+//		System.out.println(vehicleManager.getNumberOfVehiclesByType(edu.mu.vehicle.Car.class));
+//		
+//		// Testing getVehicleWithHighestMaintenanceCost
+//		System.out.println(vehicleManager.getVehicleWithHighestMaintenanceCost(300)); //temp values 
+//		
+//		// Testing getVehicleWithLowestMaintenanceCost
+//		System.out.println(vehicleManager.getVehicleWithLowestMaintenanceCost(300)); //temp values 
+//		
+//		System.out.println("\nhighest fuel efficiency");
+//		
+//		System.out.println(vehicleManager.getVehicleWithHighestFuelEfficiency(300, 3.25));
+//		
+//		System.out.println("\nlowest efficiency");
+//		System.out.println(vehicleManager.getVehicleWithLowestFuelEfficiency(300, 3.25));
+//		
+//		// Testing average
+//		System.out.println(vehicleManager.getAverageFuelEfficiencyOfSUVs(300, 3.25));
+//		
+//		// Testing removing vehicles
+//		if (vehicleManager.getVehicleList().size() != 0) {
+//			Vehicle vehicleToRemove = vehicleManager.getVehicleList().get(0);
+//			
+//			vehicleManager.displayVehicleInformation(vehicleToRemove);
+//			if (vehicleManager.removeVehicle(vehicleToRemove)) {
+//				System.out.println("removed vehicle");
+//			} else {
+//				System.out.println("removing failed");
+//			}
+//		}
+//		// Testing adding vehicles
+//		Vehicle vehicleToAdd = new Car("BMW", "M3", 2024, 78500.12, VehicleColor.BLACK, FuelType.GASOLINE, 9999, 3200, 6, 15, StartMechanism.PUSHSTART);
+//		if (vehicleManager.addVehicle(vehicleToAdd)) {
+//			System.out.println("Added vehicle");
+//			vehicleManager.displayVehicleInformation(vehicleToAdd);
+//		} else {
+//			System.out.println("adding vehicle failed");
+//		}
+//		
+//		
+//		vehicleManager.saveVehicleList();
+//		// Testing isVehicleType
+//		
 	}
 }
 

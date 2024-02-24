@@ -32,7 +32,7 @@ public class Car extends Vehicle {
 	
 	@Override
 	public String toCSVRow() {
-		return "Car," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+		return "Car," + brand + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
 				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
 	}
 

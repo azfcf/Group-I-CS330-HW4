@@ -32,7 +32,7 @@ public class Truck extends Vehicle {
 
 	@Override
 	public String toCSVRow() {
-		return "Truck," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+		return "Truck," + brand + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
 				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
 	}
 }
