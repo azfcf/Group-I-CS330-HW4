@@ -33,7 +33,7 @@ Below is a short description of each method in the VehicleManger class
 - `addVehicle(Vehicle vehicle)`
   - Adds a vehicle to the vehicleList
 - `saveVehicleList()`
-  -Writes the vehicleList to the CSV file
+  - Writes the vehicleList to the CSV file
 - `getNumberOfVehiclesByType(Class clazz)`
   - Returns the number of a specific vehicle in the vehicleList
 - `getVehicleWithHighestMaintenanceCost(double distance)`
