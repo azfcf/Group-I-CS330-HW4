@@ -32,7 +32,7 @@ public class SUV extends Vehicle{
 	
 	@Override
 	public String toCSVRow() {
-		return "SUV," + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
+		return "SUV," + brand + "," + make + "," + modelYear + "," + price + "," + color + "," + fuelType + "," + mileage + ","
 				+ mass + "," + cylinders + "," + gasTankCapacity + "," + startType;
 	}
 
