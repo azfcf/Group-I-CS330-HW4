@@ -12,7 +12,7 @@ public class Main {
 		/*
 		 *  The instructions say to read the list during object initialization.
 		 *  Therefore this isn't implemented in the Main function to avoid initializing
-		 *  the list twice. However, the code for this is implemented below.
+		 *  the list twice. However, the code for this is written below.
 		 */
 		
 //		if (vehicleManager.initalizeStock()) {
