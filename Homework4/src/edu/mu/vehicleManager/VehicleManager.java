@@ -53,18 +53,22 @@ public class VehicleManager {
 				// Split each line into data to be parsed
 				String[] splitVehicle = vehicle.split(",");
 				
-				// Read the data from the line and parse it into the required attributes for Vehicle object
-				String brand = splitVehicle[1];
-				String make = splitVehicle[2];
-				long modelYear = Long.parseLong(splitVehicle[3]);
-				double price = Double.parseDouble(splitVehicle[4]);
-				VehicleColor color = VehicleColor.valueOf(splitVehicle[5]);
-				FuelType fueltype = FuelType.valueOf(splitVehicle[6]);
-				double mileage = Double.parseDouble(splitVehicle[7]);
-				double mass = Double.parseDouble(splitVehicle[8]);
-				int cylinders = Integer.parseInt(splitVehicle[9]);
-				double gasTankCapacity = Double.parseDouble(splitVehicle[10]);
-				StartMechanism startMechanism = StartMechanism.valueOf(splitVehicle[11]);
+				/*
+				 * Read the data from the line and parse it into the required attributes for Vehicle object
+				 * The data should be formatted as follows:
+				 * vehicleType,brand,make,modelYear,price,color,fuelType,mileage,mass,cylinders,gasTankCapacity,startMechanism
+				 */
+				String brand = splitVehicle[1]; // brand
+				String make = splitVehicle[2]; // make
+				long modelYear = Long.parseLong(splitVehicle[3]); // modelYear
+				double price = Double.parseDouble(splitVehicle[4]); // price
+				VehicleColor color = VehicleColor.valueOf(splitVehicle[5]); // color
+				FuelType fueltype = FuelType.valueOf(splitVehicle[6]); // fuel type
+				double mileage = Double.parseDouble(splitVehicle[7]); // mileage
+				double mass = Double.parseDouble(splitVehicle[8]); // mass
+				int cylinders = Integer.parseInt(splitVehicle[9]); // int
+				double gasTankCapacity = Double.parseDouble(splitVehicle[10]); // gas tank capacity
+				StartMechanism startMechanism = StartMechanism.valueOf(splitVehicle[11]); // start mechanism
 				
 				/*
 				 * Parse the 1st column to determine the vehicle type. If it matches a known vehicle type,
