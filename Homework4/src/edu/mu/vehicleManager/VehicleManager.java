@@ -12,32 +12,48 @@ import edu.mu.vehicle.*;
 
 public class VehicleManager {
 	
-	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>();
+	private ArrayList<Vehicle> vehicleList = new ArrayList<Vehicle>(); // Vehicle inventory ArrayList
 	private static final String vehicleFilePath = "vehicleList.csv";  // CSV file path
 	
+	// Variables for calculating maintenance cost and fuel efficiency
 	private static final double distance = 300;
 	private static final double fuelPrice = 3.25;
 
+	// Returns a copy of the inventory
 	public ArrayList<Vehicle> getVehicleList() {
 		return new ArrayList<Vehicle>(vehicleList);
 	}
 	
+	/*
+	 * Alternate constructor - this is for if initializeStock() should be called after the VehicleManager is initialized.
+	 */
+	
+//	public VehicleManager() {
+//	}
+	
+	// Object constructor
 	public VehicleManager() { 
-		initalizeStock();
+		initalizeStock(); // Parse the stock CSV file into inventory during object initialization
 	}
 	
+	/*
+	 * This method reads the CSV file located at vehicleFilePath and attempts to convert the
+	 * lines of the CSV into Vehicle objects.
+	 */
 	public boolean initalizeStock() {
-		File file = new File(vehicleFilePath); 
+		File file = new File(vehicleFilePath); // Get the CSV file
 		try {
-			Scanner fileScanner = new Scanner(file);
-			fileScanner.nextLine();
+			Scanner fileScanner = new Scanner(file); // Initialize scanner object
+			fileScanner.nextLine(); // Skip the header line
 			
+			// Iterate through the lines of the file until there are no more lines left
 			while(fileScanner.hasNext()) {
 				// Read each line in the file and try to create a Vehicle object from the data
 				String vehicle = fileScanner.nextLine();
+				// Split each line into data to be parsed
 				String[] splitVehicle = vehicle.split(",");
 				
-				// getting data from split string
+				// Read the data from the line and parse it into the required attributes for Vehicle object
 				String brand = splitVehicle[1];
 				String make = splitVehicle[2];
 				long modelYear = Long.parseLong(splitVehicle[3]);
@@ -50,100 +66,119 @@ public class VehicleManager {
 				double gasTankCapacity = Double.parseDouble(splitVehicle[10]);
 				StartMechanism startMechanism = StartMechanism.valueOf(splitVehicle[11]);
 				
-				
-				if(splitVehicle[0].equals("Truck")){
+				/*
+				 * Parse the 1st column to determine the vehicle type. If it matches a known vehicle type,
+				 * create the corresponding object using the rest of the data from the line.
+				 * If it does not match, then ignore it.
+				 */
+				if(splitVehicle[0].equals("Truck")){ // Create a Truck object
 					Truck truck = new Truck(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(truck);
 				}
-				else if(splitVehicle[0].equals("SUV")) {
+				else if(splitVehicle[0].equals("SUV")) { // Create an SUV object
 					SUV suv = new SUV(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(suv);
 				}
-				else if(splitVehicle[0].equals("Car")) {
+				else if(splitVehicle[0].equals("Car")) { // Create a Car object
 					Car car = new Car(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(car);
 				}
-				else if(splitVehicle[0].equals("MotorBike")){
+				else if(splitVehicle[0].equals("MotorBike")){ // Create a MotorBike object
 					MotorBike bike = new MotorBike(brand, make, modelYear, price, color, fueltype, mileage, mass, cylinders, gasTankCapacity, startMechanism);
 					vehicleList.add(bike);
 				}
-				else {
+				else { // Vehicle type not recognized
 					System.out.println(splitVehicle[0] + "is not a recognized vehicle type. Skipping this entry.");
 				}
 			}
-			fileScanner.close();
+			fileScanner.close(); // Close the scanner
 			return true;
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) { // Catch for if file is not found
 			e.printStackTrace();
-		} catch (NoSuchElementException e) {
+		} catch (NoSuchElementException e) { // Catch if scanner tries to move to next line when there is none
 			System.out.println("File is formatted incorrectly or empty.");
 			e.printStackTrace();
 		}
 		return false;
 	}
 	
+	// Display all of the information for Car objects
 	public void displayAllCarInformation() {
 		boolean carExistsInList = false;
 		
+		// Iterate through the entire inventory and search for Car objects
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof Car) {
-
+				// Displays all attributes of Vehicle class as well as maintenance cost, fuel efficiency, and start type
 				vehicle.displayAllInfo(distance, fuelPrice);
 				carExistsInList = true;
 			}
 		}
 		
+		// If no Cars exist in the inventory, display a message
 		if (!carExistsInList) {
 			System.out.println("No cars in inventory.");
 		}
 	}
 	
+	// Display all of the information for Truck objects
 	public void displayAllTruckInformation() {
 		boolean truckExistsInList = false;
 		
+		// Iterate through the entire inventory and search for Truck objects
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof Truck) {
-		
+				// Displays all attributes of Vehicle class as well as maintenance cost, fuel efficiency, and start type
 				vehicle.displayAllInfo(distance, fuelPrice);
 				truckExistsInList = true;
 			}
 		}
 		
+		//If no Trucks exist in inventory, display a message
 		if (!truckExistsInList) {
 			System.out.println("No trucks in inventory.");
 		}
 	}
 	
+	// Displays all of the information for SUV objects
 	public void displayAllSUVInformation() {
 		boolean suvExistsInList = false;
 		
+		// Iterate through the entire inventory and search for SUV objects
 		for (Vehicle vehicle : vehicleList) {
 			if (vehicle instanceof SUV) {
+				// Displays all attributes of Vehicle class as well as maintenance cost, fuel efficiency, and start type
 				vehicle.displayAllInfo(distance, fuelPrice);
 				suvExistsInList = true;
 			}
 		}
 		
+		//If no SUVs exist in inventory, display a message
 		if (!suvExistsInList) {
 			System.out.println("No SUVs in inventory.");
 		}
 	}
 	
+	// Displays all of the information for MotorBike objects
 	public void displayAllMotorBikeInformation() {
 		boolean motorBikeExistsInList = false;
 		
+		// Iterate through the entire inventory and search for MotorBike objects
 		for (Vehicle vehicle : vehicleList) {
 			if ( vehicle instanceof MotorBike) {
+				// Displays all attributes of Vehicle class as well as maintenance cost, fuel efficiency, and start type
 				vehicle.displayAllInfo(distance, fuelPrice);
 				motorBikeExistsInList = true;
 			}
 		}
 		
+		//If no MotorBikes exist in inventory, display a message
 		if (!motorBikeExistsInList) {
 			System.out.println("No motor bikes in inventory.");
 		}
 	}
 	
+	// Displays the information of a given Vehicle in the inventory
 	public void displayVehicleInformation(Vehicle v) {
 		for (Vehicle vehicle: vehicleList ) {
 			if (vehicle.equals(v)) {
@@ -151,14 +186,17 @@ public class VehicleManager {
 				return;
 			}
 		}
-		System.out.println("Vehicle is not in inventory.");
+		System.out.println("Vehicle is not in inventory."); // Message if v is not found in the inventory
 	}
 	
+	// Displays the details of every vehicle in inventory
 	public void displayAllVehicleInformation() {
+		// Iterate through the entire inventory and display the vehicle details
 		for ( Vehicle vehicle: vehicleList ) {
 			vehicle.displayAllInfo(distance, fuelPrice);
 		}
 		
+		// If the inventory is empty, display a message
 		if (vehicleList.size() == 0) {
 			System.out.println("No vehicles in inventory.");
 		}
@@ -195,19 +233,20 @@ public class VehicleManager {
 				writer.write(vehicle.toCSVRow() + "\n");
 			}
 			return true; // File writer closes automatically due to try-with-resource block 
-		} catch(FileNotFoundException e) {
+		} catch(FileNotFoundException e) { // Catch if file is not found
 			System.out.println("File \"" + vehicleFilePath + "\" could not be found");
-		} catch(IOException e) {
+		} catch(IOException e) { // Catch any other errors that might occur
 			System.out.println("Cannot write to file!");
 			e.printStackTrace();
 		}
 		return false;
 	}
 	
+	// Checks if a given vehicle is a specified class
 	private boolean isVehicleType(Vehicle v, Class clazz) {
-		if (v.getClass() == clazz) {
+		if (v.getClass() == clazz) { // If vehicle class is equal to clazz, then return true
 			return true;
-		} else {
+		} else { // Return false otherwise
 			return false;
 		}
 	}

@@ -12,8 +12,14 @@ public class Main {
 		/*
 		 *  The instructions say to read the list during object initialization.
 		 *  Therefore this isn't implemented in the Main function to avoid initializing
-		 *  the list twice.
+		 *  the list twice. However, the code for this is implemented below.
 		 */
+		
+//		if (vehicleManager.initalizeStock()) {
+//			System.out.println("Stock successfully initialized");
+//		} else { 
+//			System.out.println("Stock failed to initialize");
+//		}
 		
 		// Display all vehicle information.
 		System.out.println("All Vehicle info\n-----------------------------\n");
