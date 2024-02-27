@@ -5,7 +5,7 @@
 This project is a vehicle management system. It takes a CSV file, reads it, and creates an ArrayList of vehicles such as Trucks, MotorBikes, Cars, and SUVs from the CSV file. The VehicleManager class can add vehicles to the ArrayList, remove vehicles from the ArrayList, return specific vehicles in the ArrayList, and much more. The VehicleManager class is also able to write back to the CSV file when changes to the vehicleList have been made. 
 
 ## How To Run
-To run this program, please clone the repository and run the Main file, which can be found in "edu.mu.main.Main". In the Main file, you are free to test out any of the VehicleManager Methods. 
+To run this program, please clone the repository and run the Main file, which can be found in "edu.mu.main.Main". In the Main file, you are free to test out any of the VehicleManager Methods. Ensure that when importing the Eclipse project, only "Homework4" is selected.
 
 For this program to work correctly, please ensure that the entires in the CSV file are organized as follows...
 `Type, Model, Make, ModelYear, Price, Color, FuelType, Mileage, Mass, Cylinders, GasTankCapacity, StartType`
